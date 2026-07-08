@@ -1,0 +1,84 @@
+onboarding = false
+
+# ---------------------------------------------------------------------------
+# Keys
+# ---------------------------------------------------------------------------
+# Using ctrl+alt chords for all primary actions — no prefix required.
+# ctrl+alt is the safest modifier family on macOS + Ghostty: terminals leave
+# it free, macOS doesn't compose it, and it transmits reliably.
+#
+# Prefix (ctrl+b) is kept as a fallback for everything not listed here.
+# ---------------------------------------------------------------------------
+[keys]
+prefix = "ctrl+b"
+
+# Workspaces — the sidebar list you're used to from CMUX
+workspace_picker    = ["prefix+w",        "ctrl+alt+w"]   # fuzzy-pick any workspace
+new_workspace       = ["prefix+shift+n",  "ctrl+alt+n"]   # create a new workspace
+rename_workspace    = ["prefix+shift+w",  "ctrl+alt+shift+w"]
+close_workspace     = ["prefix+shift+d",  "ctrl+alt+shift+d"]
+previous_workspace  = "ctrl+alt+up"
+next_workspace      = "ctrl+alt+down"
+
+# Tabs — equivalent to CMUX tabs within a workspace
+new_tab             = ["prefix+c",        "ctrl+alt+t"]
+next_tab            = ["prefix+n",        "ctrl+alt+]"]
+previous_tab        = ["prefix+p",        "ctrl+alt+["]
+rename_tab          = ["prefix+shift+t",  "ctrl+alt+shift+t"]
+close_tab           = ["prefix+shift+x",  "ctrl+alt+shift+x"]
+switch_tab          = "prefix+1..9"
+
+# Pane focus — vi-style, also with ctrl+alt for prefix-free use
+focus_pane_left     = ["prefix+h",        "ctrl+alt+h"]
+focus_pane_down     = ["prefix+j",        "ctrl+alt+j"]
+focus_pane_up       = ["prefix+k",        "ctrl+alt+k"]
+focus_pane_right    = ["prefix+l",        "ctrl+alt+l"]
+
+# Pane management
+split_vertical      = ["prefix+v",        "ctrl+alt+d"]
+split_horizontal    = ["prefix+minus",    "ctrl+alt+shift+s"]
+zoom                = ["prefix+z",        "ctrl+alt+z"]
+close_pane          = ["prefix+x",        "ctrl+alt+x"]
+
+# Sidebar and misc
+toggle_sidebar      = ["prefix+b",        "ctrl+alt+s"]
+goto                = ["prefix+g",        "ctrl+alt+g"]   # goto picker (workspaces + tabs)
+copy_mode           = ["prefix+[",        "ctrl+alt+c"]
+detach              = ["prefix+q",        "ctrl+alt+q"]   # detach — agents keep running
+
+# Navigate mode (sidebar keyboard nav) — plain keys are fine here
+navigate_workspace_up   = "up"
+navigate_workspace_down = "down"
+navigate_pane_left      = "h"
+navigate_pane_down      = "j"
+navigate_pane_up        = "k"
+navigate_pane_right     = "l"
+
+# Quick lazygit pane (handy with the multi-repo workflow in your sidebar)
+[[keys.command]]
+key         = "ctrl+alt+i"
+type        = "pane"
+command     = "lazygit"
+description = "open lazygit"
+
+# ---------------------------------------------------------------------------
+# UI
+# ---------------------------------------------------------------------------
+[ui]
+agent_panel_scope            = "all"
+show_agent_labels_on_pane_borders = true
+hide_tab_bar_when_single_tab = true    # cleaner when you only have one tab open
+confirm_close                = true
+prompt_new_tab_name          = true
+
+agent_panel_sort = "spaces"
+[ui.toast]
+delivery      = "system"
+delay_seconds = 2
+
+# ---------------------------------------------------------------------------
+# Theme — keeping your existing catppuccin
+# ---------------------------------------------------------------------------
+[theme]
+name        = "catppuccin"
+auto_switch = false

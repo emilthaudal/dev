@@ -1,0 +1,33 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[user]
+	name = Emil Thaudal Bønnerup
+	email = emil@thaudal.com
+
+[push]
+	autoSetupRemote=true
+
+[includeIf "gitdir:~/Developer/wag/"]
+    path = .wg_gitconfig
+[core]
+	hooksPath = /Users/emtb/.git-hooks
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true        # n/N to move between diff sections
+	side-by-side = false   # unified view (set to true if you prefer side-by-side)
+	line-numbers = true
+	syntax-theme = Catppuccin Mocha
+
+[merge]
+	conflictstyle = zdiff3
+[http]
+	sslCAInfo = /Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem
