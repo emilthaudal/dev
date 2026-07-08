@@ -2,7 +2,7 @@
 # Docs: https://ghostty.org/docs/config
 
 # ── FONT ────────────────────────────────────────────────────────────────────
-font-family = MonaspiceAr Nerd Font
+font-family = Monaspace Argon NF
 font-size = 13
 font-feature = calt
 font-feature = ss01
