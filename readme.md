@@ -143,6 +143,18 @@ delta config in `~/.gitconfig` — hooks in automatically via `core.pager`.
 
 ---
 
+## Claude Code
+
+Config: `~/.claude/settings.json`
+
+- Permissions default to `auto` mode; output style `Concise`; effort level `high` for Opus/Sonnet
+- Statusline: custom script showing user@host, cwd, git branch/dirty count/ahead-behind, model, context-remaining bar, session cost/duration/lines changed, and 5h/7d rate-limit bars
+- `SessionStart` hook wired to herdr's pane-tracking integration (`~/.claude/hooks/herdr-agent-state.sh`) — that hook file itself is **not** stored here; it's auto-installed/overwritten by `herdr`'s Claude integration on setup, not hand-maintained
+
+`claude/settings.json` in this repo hardcodes `/Users/emtb/...` paths for the hooks/statusline commands — update the username if restoring onto a different account.
+
+---
+
 ## Config files in this repo
 
 | File                              | Description                        |
@@ -154,6 +166,8 @@ delta config in `~/.gitconfig` — hooks in automatically via `core.pager`.
 | `config/herdr/config.toml`        | herdr multiplexer config           |
 | `ghostty/config`                  | Ghostty terminal config            |
 | `gitconfig`                       | Git config (delta, user, etc.)     |
+| `claude/settings.json`            | Claude Code settings (statusline, hooks, permissions) |
+| `claude/statusline-command.sh`    | Claude Code statusline script      |
 
 ---
 
@@ -178,5 +192,9 @@ echo 'export NPM_TOKEN="..."' > ~/.secrets && chmod 600 ~/.secrets
 # 5. Build bat theme cache
 bat cache --build
 
-# 6. Restart terminal
+# 6. Copy Claude Code config (fix the /Users/emtb path inside settings.json first)
+cp claude/settings.json ~/.claude/settings.json
+cp claude/statusline-command.sh ~/.claude/statusline-command.sh
+
+# 7. Restart terminal
 ```

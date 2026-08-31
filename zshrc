@@ -91,6 +91,10 @@ eval "$(starship init zsh)"
 # ── GIT ALIASES ─────────────────────────────────────────────────────────────
 source "$HOME/.config/zsh/git-aliases.zsh"
 
+# ── AWS ──────────────────────────────────────────────────────────────────────
+# awsp: pick profile via fzf, awsa: SSO sign-in, awsclear: wipe AWS env vars
+source "$HOME/.aws/wag-aws-shell-functions.sh"
+
 # ── AIKIDO ENDPOINT PROTECTION ──────────────────────────────────────────────
 # (Managed by Aikido Security — do not edit manually)
 # aikido-endpoint-cert-config-start

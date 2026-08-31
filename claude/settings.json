@@ -1,0 +1,60 @@
+{
+  "env": {
+    "CLAUDE_AFK_TIMEOUT_MS": "3600000",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "0"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "skillOverrides": {
+    "clerk-backend-api": "off",
+    "clerk-cli": "off",
+    "clerk-custom-ui": "off",
+    "clerk-nextjs-patterns": "off",
+    "clerk-orgs": "off",
+    "clerk-setup": "off",
+    "clerk-testing": "off",
+    "clerk-webhooks": "off",
+    "find-skills": "off",
+    "frontend-design": "off",
+    "vercel-react-best-practices": "off",
+    "web-design-guidelines": "off"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/emtb/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/emtb/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": false
+  },
+  "outputStyle": "Concise",
+  "effortLevel": "medium",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    },
+    "claude-sonnet-5": {
+      "effortLevel": "high"
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true
+}
