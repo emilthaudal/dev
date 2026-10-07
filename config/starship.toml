@@ -1,7 +1,9 @@
-# Starship config — Catppuccin Mocha palette (matches herdr theme)
+# Starship config — Embark palette (matches Ghostty theme)
 # https://starship.rs/config/
 
 "$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "embark"
 
 # Wait 10ms for starship to check files under current directory.
 scan_timeout = 10
@@ -31,7 +33,7 @@ $character"""
 # ── OS ───────────────────────────────────────────────────────────────────────
 [os]
 disabled = false
-style = "bg:#313244 fg:#cba6f7"
+style = "bg:surface fg:purple"
 
 [os.symbols]
 Macos = " "
@@ -39,20 +41,20 @@ Macos = " "
 # ── USERNAME ────────────────────────────────────────────────────────────────
 [username]
 show_always = false
-style_user = "bg:#313244 fg:#cdd6f4"
-style_root = "bg:#313244 fg:#f38ba8"
+style_user = "bg:surface fg:text"
+style_root = "bg:surface fg:red"
 format = '[$user ]($style)'
 disabled = false
 
 # ── DIRECTORY ───────────────────────────────────────────────────────────────
 [directory]
-style = "fg:#89b4fa"
+style = "fg:blue"
 format = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 4
 truncation_symbol = "…/"
 truncate_to_repo = false
 read_only = " 󰌾"
-read_only_style = "fg:#f38ba8"
+read_only_style = "fg:red"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -64,11 +66,11 @@ read_only_style = "fg:#f38ba8"
 # ── GIT ──────────────────────────────────────────────────────────────────────
 [git_branch]
 symbol = " "
-style = "fg:#a6e3a1"
+style = "fg:green"
 format = '[$symbol$branch(:$remote_branch)]($style) '
 
 [git_status]
-style = "fg:#f38ba8"
+style = "fg:red"
 format = '([$all_status$ahead_behind]($style) )'
 conflicted = "󰦎 ${count} "
 ahead = "⇡${count} "
@@ -84,44 +86,44 @@ deleted = "✘${count} "
 
 [git_metrics]
 disabled = false
-added_style = "fg:#a6e3a1"
-deleted_style = "fg:#f38ba8"
+added_style = "fg:green"
+deleted_style = "fg:red"
 format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
 
 # ── AWS ──────────────────────────────────────────────────────────────────────
 [aws]
 symbol = "  "
-style = "fg:#fab387"
+style = "fg:orange"
 format = '[$symbol$profile(\($region\))]($style) '
 
 # ── LANGUAGES ────────────────────────────────────────────────────────────────
 [nodejs]
 symbol = " "
-style = "fg:#a6e3a1"
+style = "fg:green"
 format = '[$symbol($version )]($style)'
 detect_files = ["package.json", ".node-version", ".nvmrc"]
 detect_folders = ["node_modules"]
 
 [bun]
 symbol = " "
-style = "fg:#f9e2af"
+style = "fg:yellow"
 format = '[$symbol($version )]($style)'
 
 [python]
 symbol = " "
-style = "fg:#f9e2af"
+style = "fg:yellow"
 format = '[$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)'
 detect_extensions = ["py"]
 detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "Pipfile"]
 
 [rust]
 symbol = " "
-style = "fg:#fab387"
+style = "fg:orange"
 format = '[$symbol($version )]($style)'
 
 [docker_context]
 symbol = " "
-style = "fg:#89dceb"
+style = "fg:cyan"
 format = '[$symbol$context ]($style)'
 only_with_files = true
 detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
@@ -129,11 +131,23 @@ detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 # ── CMD DURATION ────────────────────────────────────────────────────────────
 [cmd_duration]
 min_time = 2_000
-style = "fg:#f9e2af"
+style = "fg:yellow"
 format = ' [󱑂 $duration]($style) '
 
 # ── CHARACTER ───────────────────────────────────────────────────────────────
 [character]
-success_symbol = "[❯](fg:#a6e3a1)"
-error_symbol = "[❯](fg:#f38ba8)"
-vimcmd_symbol = "[❮](fg:#cba6f7)"
+success_symbol = "[❯](fg:green)"
+error_symbol = "[❯](fg:red)"
+vimcmd_symbol = "[❮](fg:purple)"
+
+# ── PALETTE ─────────────────────────────────────────────────────────────────
+[palettes.embark]
+surface = "#2d2b40"
+text = "#cbe3e7"
+purple = "#c792ea"
+blue = "#91ddff"
+cyan = "#87dfeb"
+green = "#a1efd3"
+yellow = "#ffe6b3"
+orange = "#f2b482"
+red = "#f48fb1"

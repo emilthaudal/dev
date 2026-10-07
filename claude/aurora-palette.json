@@ -1,0 +1,13 @@
+{
+  "stops": ["#a37acc", "#c792ea", "#f48fb1", "#d4bfff", "#91ddff", "#a1efd3"],
+  "lavender": "#d4bfff",
+  "muted": "#8a889d",
+  "rule": "#3e3859",
+  "pink": "#f48fb1",
+  "purple": "#c792ea",
+  "blue": "#91ddff",
+  "cyan": "#87dfeb",
+  "ok": "#a1efd3",
+  "warn": "#ffe6b3",
+  "bad": "#f02e6e"
+}

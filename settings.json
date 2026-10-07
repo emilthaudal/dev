@@ -44,7 +44,7 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
-    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.colorTheme": "Embark Theme",
     "workbench.iconTheme": "catppuccin-macchiato",
     "go.buildTags": "integration",
     "go.useLanguageServer": true,
@@ -154,8 +154,6 @@
     "[github-actions-workflow]": {
         "editor.defaultFormatter": "redhat.vscode-yaml",
     },
-    "gitlens.ai.model": "vscode",
-    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
     "eslint.useFlatConfig": true,
     "chat.tools.terminal.autoApprove": {
         "yarn lint": true,

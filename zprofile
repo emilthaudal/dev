@@ -2,7 +2,11 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 # aikido-endpoint-cert-config-start
 # Allow Node.js tooling to trust the SafeChain MITM CA while preserving public roots.
-export NODE_EXTRA_CA_CERTS="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-combined-ca.pem"
+export NODE_EXTRA_CA_CERTS="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-node-combined-ca.pem"
+case "${NODE_OPTIONS:-}" in
+  *--use-openssl-ca*) unset NODE_USE_SYSTEM_CA ;;
+  *) export NODE_USE_SYSTEM_CA=1 ;;
+esac
 # aikido-endpoint-cert-config-end
 # aikido-endpoint-pip-cert-config-start
 # Allow Python package managers to trust the SafeChain MITM CA while preserving user-provided roots.
@@ -15,7 +19,8 @@ export UV_SYSTEM_CERTS=true
 # Allow Ruby Bundler to trust the SafeChain MITM CA while preserving public roots.
 export BUNDLE_SSL_CA_CERT="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-ruby-combined-ca.pem"
 # aikido-endpoint-ruby-cert-config-end
-# aikido-endpoint-curl-cert-config-start
+# aikido-endpoint-curl-cert-config-v2-start
 # Allow curl and other OpenSSL-linked tools to trust the SafeChain MITM CA while preserving the system roots.
+export SSL_CERT_FILE="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem"
 export CURL_CA_BUNDLE="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem"
-# aikido-endpoint-curl-cert-config-end
+# aikido-endpoint-curl-cert-config-v2-end

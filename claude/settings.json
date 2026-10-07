@@ -8,8 +8,14 @@
     "pr": ""
   },
   "permissions": {
+    "allow": [
+      "mcp__atlassian__searchJiraIssuesUsingJql",
+      "Edit(~/.claude/dev-mods/**)",
+      "Write(~/.claude/dev-mods/**)"
+    ],
     "defaultMode": "auto"
   },
+  "model": "opus",
   "skillOverrides": {
     "clerk-backend-api": "off",
     "clerk-cli": "off",
@@ -21,18 +27,58 @@
     "clerk-webhooks": "off",
     "find-skills": "off",
     "frontend-design": "off",
+    "use-railway": "off",
     "vercel-react-best-practices": "off",
     "web-design-guidelines": "off"
   },
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "*",
+        "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
             "type": "command",
             "command": "bash '/Users/emtb/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "python3 /Users/emtb/.claude/hooks/wag-task-context.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /Users/emtb/.claude/hooks/wag-task-context.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /Users/emtb/.claude/hooks/wag-task-context.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /Users/emtb/.claude/hooks/wag-task-context.py",
+            "timeout": 5
           }
         ]
       }
@@ -43,7 +89,26 @@
     "command": "bash /Users/emtb/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "superpowers@claude-plugins-official": false
+    "superpowers@claude-plugins-official": false,
+    "swift-lsp@claude-plugins-official": true,
+    "typesafe@typesafe-ai": true,
+    "datadog@claude-plugins-official": true,
+    "code-modernization@claude-plugins-official": true,
+    "whiteaway@whiteaway": true
+  },
+  "extraKnownMarketplaces": {
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
+      }
+    },
+    "whiteaway": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/emtb/Developer/wag/worktrees/agent-plugins-whiteaway"
+      }
+    }
   },
   "outputStyle": "Concise",
   "effortLevel": "medium",
@@ -53,8 +118,22 @@
     },
     "claude-sonnet-5": {
       "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "pluginConfigs": {
+    "code-modernization@claude-plugins-official": {
+      "options": {
+        "track": "auto",
+        "panel": "auto",
+        "xray": true,
+        "telemetry": true
+      }
     }
   },
   "skipDangerousModePermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto"
 }
