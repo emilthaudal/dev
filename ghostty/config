@@ -15,8 +15,8 @@ font-feature = ss07
 font-feature = ss08
 
 # ── THEME ───────────────────────────────────────────────────────────────────
-# Catppuccin Mocha — matches herdr theme
-theme = Catppuccin Mocha
+# herdr and Claude Code take their colors from this theme
+theme = Embark
 
 # ── CURSOR ──────────────────────────────────────────────────────────────────
 cursor-style = bar
@@ -25,15 +25,16 @@ cursor-style-blink = true
 # ── WINDOW ──────────────────────────────────────────────────────────────────
 window-padding-x = 8
 window-padding-y = 8
-window-decoration = false
+window-decoration = true
 
 # ── SCROLLBACK ──────────────────────────────────────────────────────────────
 scrollback-limit = 10000
 
 # ── KEYBOARD ────────────────────────────────────────────────────────────────
-# Send ESC sequences for Option key combinations (enables opt+backspace word
-# delete, opt+left/right word navigation, etc.) instead of macOS special chars.
-macos-option-as-alt = true
+# opt+left/right word nav is a Ghostty default (alt+arrow_left/right=esc:b/f).
+# opt+backspace has no default bind, so add it explicitly — this keeps Option
+# free elsewhere for macOS dead-key/compose input (e.g. Danish opt+' -> @).
+keybind = alt+backspace=text:\x1b\x7f
 
 # ── MISC ────────────────────────────────────────────────────────────────────
 # Copy on select

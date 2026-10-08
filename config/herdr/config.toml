@@ -20,6 +20,10 @@ close_workspace     = ["prefix+shift+d",  "ctrl+alt+shift+d"]
 previous_workspace  = "ctrl+alt+up"
 next_workspace      = "ctrl+alt+down"
 
+# Agents
+previous_agent      = "ctrl+alt+,"
+next_agent          = "ctrl+alt+."
+
 # Tabs — equivalent to CMUX tabs within a workspace
 new_tab             = ["prefix+c",        "ctrl+alt+t"]
 next_tab            = ["prefix+n",        "ctrl+alt+]"]
@@ -61,11 +65,18 @@ type        = "pane"
 command     = "lazygit"
 description = "open lazygit"
 
+[[keys.command]]
+key         = "ctrl+alt+a"
+type        = "popup"
+command     = "/Users/emtb/.local/bin/wag-task-popup"
+description = "dispatch a wag task to a new agent tab"
+width       = "70%"
+height      = 8
+
 # ---------------------------------------------------------------------------
 # UI
 # ---------------------------------------------------------------------------
 [ui]
-agent_panel_scope            = "all"
 show_agent_labels_on_pane_borders = true
 hide_tab_bar_when_single_tab = true    # cleaner when you only have one tab open
 confirm_close                = true
@@ -73,12 +84,25 @@ prompt_new_tab_name          = true
 
 agent_panel_sort = "spaces"
 [ui.toast]
-delivery      = "system"
+delivery = "terminal"
 delay_seconds = 2
 
+# $ticket, $repos, $prs come from ~/.claude/hooks/wag-task-context.py
+[ui.sidebar.agents]
+row_gap = 1
+rows = [
+  ["state_icon", "workspace", { token = "$ticket", fg = "#f9e2af", bold = true }],
+  [{ token = "terminal_title_stripped", dim = true }],
+  [{ token = "$repos", fg = "#89b4fa" }],
+  [{ token = "$prs", fg = "#a6e3a1" }],
+]
+
 # ---------------------------------------------------------------------------
-# Theme — keeping your existing catppuccin
+# Theme — follows Ghostty's palette
 # ---------------------------------------------------------------------------
 [theme]
-name        = "catppuccin"
+name = "terminal"
 auto_switch = false
+
+[update]
+channel = "stable"
