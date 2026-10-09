@@ -14,8 +14,8 @@ Ghostty  →  herdr  →  zsh + Starship
 | Multiplexer| **herdr**                | Workspaces, panes, tabs. Prefix: `ctrl+b`  |
 | Shell      | **zsh** (no OMZ)         | Plugins loaded directly via Homebrew       |
 | Prompt     | **Starship** v1.26       | Embark palette, Nerd Font icons            |
-| Font       | **Monaspace Argon NF**   | Texture healing + `ss01`–`ss08`, Nerd Font built-in |
-| Theme      | **Embark**               | Set once in Ghostty; herdr and Starship follow it. See [Theme](#theme) |
+| Font       | **Monaspace Neon NF**    | Texture healing + `ss01`–`ss08`, Nerd Font built-in |
+| Theme      | **Embark**               | Set in each tool's config. See [Theme](#theme) |
 
 ---
 
@@ -26,13 +26,12 @@ https://claude.ai/artifact/HGf6mRax4x6qCD4moX4mYB (previews themes on a mockup o
 Ghostty + herdr + VS Code, compares Monaspace Argon vs Neon, and gives the
 config lines for each tool).
 
-**Ghostty is the single source of truth.** To change theme, change the
-`theme =` line in Ghostty and the tools below follow:
+Each tool sets the theme itself:
 
 | Tool          | How it gets the theme                                                       |
 | ------------- | --------------------------------------------------------------------------- |
 | Ghostty       | `theme = Embark`                                                            |
-| herdr         | `[theme] name = "terminal"` — uses Ghostty's ANSI colors                    |
+| herdr         | `[theme] name = "terminal"` plus Embark hex values in `[theme.custom]`. The `terminal` theme alone derives its sidebar and tab shades off-palette, and its dim text is unreadable on Embark. `panel_bg = "reset"` keeps the panes and sidebar on Ghostty's exact background |
 | Starship      | `palette = "embark"` + ANSI names (`fg:purple`), hex only in `[palettes.embark]` |
 | Claude Code   | `"theme": "auto"`                                                           |
 | CC statusline | Its own truecolor palette in `~/.claude/aurora-palette.json` (Embark hex values) |
@@ -41,8 +40,9 @@ config lines for each tool).
 Still hardcoded to the old Catppuccin colors: the herdr agent sidebar rows
 (`[ui.sidebar.agents]`, `#f9e2af` / `#89b4fa` / `#a6e3a1`).
 
-When switching theme, also update `[palettes.*]` in `starship.toml`,
-`aurora-palette.json` and the VS Code/Cursor setting.
+When switching theme, also update `[theme.custom]` in herdr's config,
+`[palettes.*]` in `starship.toml`, `aurora-palette.json` and the VS Code/Cursor
+setting.
 
 ---
 
@@ -51,7 +51,7 @@ When switching theme, also update `[palettes.*]` in `starship.toml`,
 Config: `~/Library/Application Support/com.mitchellh.ghostty/config`
 
 Key settings:
-- Font: `Monaspace Argon NF`, size 13, features `calt` + `ss01`–`ss08`
+- Font: `Monaspace Neon NF`, size 13, features `calt` + `ss01`–`ss08`
 - Theme: `Embark`
 - `⌥+Backspace` word delete via an explicit keybind (`alt+backspace=text:\x1b\x7f`);
   `⌥+←/→` word jump is a Ghostty default. `macos-option-as-alt` is deliberately

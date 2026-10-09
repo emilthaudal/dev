@@ -98,11 +98,31 @@ rows = [
 ]
 
 # ---------------------------------------------------------------------------
-# Theme — follows Ghostty's palette
+# Theme — Embark, matching Ghostty, VS Code and Starship
 # ---------------------------------------------------------------------------
 [theme]
 name = "terminal"
 auto_switch = false
+
+[theme.custom]
+panel_bg = "reset"
+surface_dim = "#171527"
+surface0 = "#2d2b40"
+surface1 = "#3e3859"
+active_row_bg = "#2d2b40"
+selection_bg = "#3e3859"
+overlay0 = "#8a889d"
+overlay1 = "#a6b3cc"
+subtext0 = "#a6b3cc"
+text = "#cbe3e7"
+accent = "#c792ea"
+mauve = "#c792ea"
+blue = "#91ddff"
+teal = "#87dfeb"
+green = "#a1efd3"
+yellow = "#ffe6b3"
+peach = "#f2b482"
+red = "#f48fb1"
 
 [update]
 channel = "stable"

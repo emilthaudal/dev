@@ -1,7 +1,8 @@
 {
   "env": {
     "CLAUDE_AFK_TIMEOUT_MS": "3600000",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "0"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "0",
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/Developer/claude-plugins/glamour-levels"
   },
   "attribution": {
     "commit": "",
